@@ -1,0 +1,49 @@
+body{
+    background-image: url(https://previews.123rf.com/images/tartila/tartila1903/tartila190300099/118918897-neon-question-mark-frame-quiz-lighting-interrogation-point-red-neon-lamp-on-bricks-wall-texture-back.jpg);
+    margin: auto;
+    color: white;
+    background-size: cover;
+}
+
+
+
+
+.home
+{
+   position:relative;
+   top: 300px;
+   left: 250px;
+   width: 50%;
+   border: 5px solid;
+   background-color: white;
+   padding: 90px;
+   color: black;
+
+}
+
+.title{
+    font-weight: bolder;
+    position: relative;
+    bottom: 40px;
+    font-size: x-large;
+    text-decoration: underline;
+}
+
+.quiz-info{
+    position:relative;
+    bottom:10px;
+    left: 40px;
+}
+
+.quiz-info-rules{
+    position: relative;
+    top: 15px;
+    left:40px;
+}
+
+.startbutton{
+    position: relative;
+    top: 50px;
+    left: 190px;
+
+}
