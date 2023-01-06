@@ -1,168 +1,92 @@
-var start_btn = document.querySelector(".start_btn button")
-var Start = document.querySelector(".start")
-var quizInfo = document.querySelector(".quiz-info")
-var quizRules = document.querySelector(".quiz-info-rules")
-var quitButton = document.querySelector(".botton", ".quit")
-var continueButton = document.querySelector(".botton", ".continue")
-var quiz = document.querySelector(".quiz")
-var timer = document.querySelector(".timer")
-var time = document.querySelector(".timersec")
-var timeRemaning = document.querySelector(".timersec")
-var finishButton = document.querySelector("bottons", ".finsih")
-var retryButton = document.querySelector("bottons", ".retry")
-var Results = document.querySelector(".results")
 
-var timerCount;
-var timer;
-var question_count = 0;
-var question_number = 0;
-var isCorrect = false;
-// var userScore = 0;
-// var counter;
-// var counterLine;
-// var widthValue = 0;
-var quizQuestions = [
+// var Start = document.querySelector(".start")
+// var quizInfo = document.querySelector(".quiz-info")
+// var quizRules = document.querySelector(".quiz-info-rules")
+// var quitButton = document.querySelector(".botton", ".quit")
+// var continueButton = document.querySelector(".botton", ".continue")
+// var quiz = document.querySelector(".quiz")
+// var timer = document.querySelector(".timer")
+// var time = document.querySelector(".timersec")
+// var timeRemaning = document.querySelector(".timersec")
+// var finishButton = document.querySelector("bottons", ".finsih")
+// var retryButton = document.querySelector("bottons", ".retry")
+// var Results = document.querySelector(".results")
+
+// var timerCount;
+// var timer;
+// var question_count = 0;
+// var question_number = 0;
+// var isCorrect = false;
+
+const startBtn = document.querySelector("start")
+const quizContainer = document.getElementById('quiz');
+const outcomeContainer = document.getElementById('outcome');
+const finishButton = document.getElementById('finish');
+
+
+
+const quizQuestions = [
     {
-    numb: 1,
-    question: "a?",
-    answer: "a",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
-    {
-    numb: 2,
-    question: "a?",
+    question: "who created javascript?",
+    options:{ 
+      a:'Larry Page ',
+      b:'Brendan Eich',
+      c:'Guido van Rossum',
+      d:'Bill Gates'
+    },
     answer: "b",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
+
   },
     {
-    numb: 3,
-    question: "a?",
-    answer: "c",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
-    {
-    numb: 4,
-    question: "a?",
-    answer: "a",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
-    {
-    numb: 5,
-    question: "a?",
+    question: "how do you add a  image in css",
+    options:{ 
+      a:'background-image:',
+      b:'image:',
+      c:'url:',
+      d:'background-image: url()'
+    },
     answer: "d",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
 
-  {
-    numb: 6,
-    question: "a?",
-    answer: "c",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
   },
-
-  {
-    numb: 7,
-    question: "a?",
+    {
+    question: "how do you create a button?",
+    options:{ 
+      a:'<button type="button">Click Me!</button>',
+      b:'<button>Click Me!</button>',
+    },
     answer: "a",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
+
   },
 
-  {
-    numb: 8,
-    question: "a?",
-    answer: "a",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
-
-  {
-    numb: 9,
-    question: "a?",
-    answer: "a",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
-
-  {
-    numb: 10,
-    question: "a?",
-    answer: "b",
-    options: [
-      "a",
-      "b",
-      "c",
-      "d"
-    ]
-  },
+ 
   
 ];
 
-var choices = ['a', 'b', 'c', 'd']
 
 function init() {
-  quizStart();
+  startBtn.onclick = quizStart()
+
 
 }
+
+
 
 function quizStart() {
+  let question = quizQuestions[0];
+  let options = question.options;
 
-  isCorrect = false;
-  timerCount = 25;
-  startButton.disabled = true;
-  renderquizQuestions()
+  for (let i = 0; i < options.length; i++) {
+    let option = options[i];
+    let optionButton = document.querySelector("#option" + i);
+    optionButton.textContent = option;
+  }
   startTimer()
 }
-start_btn.onclick = (quiz) => {
-  quizStart.classList.add("activeStart")
-  timer = 25;
-  question_number = 1;
-  question_count = 0;
-  userScore = 0;
-  counter;
-}
+
+
+
+
+
 function startTimer() {
   // Sets timer
   timer = setInterval(function() {
@@ -172,61 +96,30 @@ function startTimer() {
       // Tests if win condition is met
       if (isCorrect && timerCount > 0) {
         // Clears interval and stops timer
-        clearInterval(timer);
-        winGame();
+        clearInterval(timer); 
       }
     }
     // Tests if time has run out
     if (timerCount === 0) {
       // Clears interval
       clearInterval(timer);
-      loseGame();
     }
   }, 1000);
 }
 
-// The winGame function is called when the win condition is met
-function winQuiz() {
-  quiz.textContent = "YOU WON!!!🏆 ";
-  winCounter++
-  start_btn.disabled = false;
-  setWins()
-}
-function renderquizQuestions(){
- return quizQuestions;
+// continueButton.onclick = () => {
+//   quizStart.classList.remove("activeStart")
+//   quiz.classList.add("activeQuiz")
+//   timer = timerCount;
 
-}
-function loseQuiz() {
-  quiz.textContent = "GAME OVER";
-  loseCounter++
-  startButton.disabled = false;
-  setLosses()
-}
-// quitButton.onclick = () => {
-//   quizStart.classList.remove("ativeStart")
-// }
 
-continueButton.onclick = () => {
-  quizStart.classList.remove("activeStart")
-  quiz.classList.add("activeQuiz")
-  timer=timerCount;
-  question_number;
-  question_count;
-  userScore;
-  counter;
-
-};
+// };
 
 
 restartQuiz.onclick = () => {
-  quiz.classList.add("quiz-questins", "quiz-options" )
+  quiz.classList.add("quizQuestions", "quizQuestions.options" )
   time = 25;
-  question_number;
-  question_count;
-  userScore;
   counter;
-
-
 
 }
 
