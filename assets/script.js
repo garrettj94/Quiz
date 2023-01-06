@@ -1,23 +1,8 @@
-
-// var Start = document.querySelector(".start")
-// var quizInfo = document.querySelector(".quiz-info")
-// var quizRules = document.querySelector(".quiz-info-rules")
-// var quitButton = document.querySelector(".botton", ".quit")
-// var continueButton = document.querySelector(".botton", ".continue")
-// var quiz = document.querySelector(".quiz")
-// var timer = document.querySelector(".timer")
-// var time = document.querySelector(".timersec")
-// var timeRemaning = document.querySelector(".timersec")
-// var finishButton = document.querySelector("bottons", ".finsih")
-// var retryButton = document.querySelector("bottons", ".retry")
-// var Results = document.querySelector(".results")
-
-// var timerCount;
-// var timer;
-// var question_count = 0;
-// var question_number = 0;
-// var isCorrect = false;
-
+var quitButton = document.querySelector("quit")
+var continueButton = document.querySelector("continue")
+var timer = document.querySelector(".timer")
+var time = document.querySelector(".timersec")
+var restartButton = document.querySelector("retry")
 const startBtn = document.querySelector("start")
 const quizContainer = document.getElementById('quiz');
 const outcomeContainer = document.getElementById('outcome');
@@ -25,7 +10,20 @@ const finishButton = document.getElementById('finish');
 
 
 
-const quizQuestions = [
+
+
+
+function startButton() {
+ quizStart()
+ document.querySelector("start").addEventListener('click')
+
+}
+
+
+
+function quizStart() {
+
+  const quizQuestions = [
     {
     question: "who created javascript?",
     options:{ 
@@ -61,25 +59,10 @@ const quizQuestions = [
  
   
 ];
-
-
-function init() {
-  startBtn.onclick = quizStart()
-
-
-}
-
-
-
-function quizStart() {
-  let question = quizQuestions[0];
-  let options = question.options;
-
-  for (let i = 0; i < options.length; i++) {
-    let option = options[i];
-    let optionButton = document.querySelector("#option" + i);
-    optionButton.textContent = option;
-  }
+for(let i = 0; i < quizQuestions.options; i++)
+  if( quizQuestions.options === quizQuestions.answer) 
+  return "you are correct"
+  
   startTimer()
 }
 
@@ -107,19 +90,4 @@ function startTimer() {
   }, 1000);
 }
 
-// continueButton.onclick = () => {
-//   quizStart.classList.remove("activeStart")
-//   quiz.classList.add("activeQuiz")
-//   timer = timerCount;
-
-
-// };
-
-
-restartQuiz.onclick = () => {
-  quiz.classList.add("quizQuestions", "quizQuestions.options" )
-  time = 25;
-  counter;
-
-}
 
